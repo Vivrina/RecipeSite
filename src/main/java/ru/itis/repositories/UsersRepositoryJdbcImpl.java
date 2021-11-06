@@ -12,7 +12,7 @@ public class UsersRepositoryJdbcImpl implements UserRepository{
     private Connection connection;
 
     //language=sql
-    private final String SQL_INSERT_USER = "INSERT INTO users(name, passwordHash, email, achievement ) VALUES (?, ?, ?, ?)";
+    private final String SQL_INSERT_USER = "INSERT INTO users(name, password, email, achievement ) VALUES (?, ?, ?, ?)";
 
     public UsersRepositoryJdbcImpl(Statement statement) {
         this.statement = statement;

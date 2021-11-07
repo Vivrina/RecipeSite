@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -11,7 +12,7 @@
     <title>Sign Up</title>
 </head>
 <body>
-<form action="/profile" method="post" class="form">
+<form action="<>" method="post" class="form">
     <p>Sign Up</p>
     <p>
         <label for="name">Login<input id="name" type="text" name="login" value=""></label>

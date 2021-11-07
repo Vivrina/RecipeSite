@@ -12,7 +12,8 @@ public class UsersRepositoryJdbcImpl implements UserRepository{
     private Connection connection;
 
     //language=sql
-    private final String SQL_INSERT_USER = "INSERT INTO users(name, password, email, achievement ) VALUES (?, ?, ?, ?)";
+    private final String SQL_INSERT_USER = "INSERT INTO users(name, password, email, achievement ) VALUES (?, ?, ?, ?);";
+    private final String SQL_FIND_USER_BY_LOGIN = "SELECT * FROM users WHERE email=?;";
 
     public UsersRepositoryJdbcImpl(Statement statement) {
         this.statement = statement;
@@ -61,5 +62,28 @@ public class UsersRepositoryJdbcImpl implements UserRepository{
     @Override
     public void deleteById(Long id) {
 
+    }
+
+    @Override
+    public User findByLogin(String email) {
+        ResultSet resultSet = null;
+        User user = null;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL_FIND_USER_BY_LOGIN);
+            preparedStatement.setString(1, email);
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()){
+                user = new User();
+                user.setId_user(resultSet.getLong("id_user"));
+                user.setName(resultSet.getString("name"));
+                user.setPasswordHash(resultSet.getString("password"));
+                user.setEmail(resultSet.getString("email"));
+                user.setAchievement(resultSet.getInt("achievement"));
+            }
+        } catch (SQLException throwables){
+            //throwables.printStackTrace();
+        }
+        return user;
     }
 }

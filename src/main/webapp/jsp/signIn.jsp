@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -54,11 +55,12 @@
 
     <!-- Custom styles for this template -->
     <link href="${pageContext.request.contextPath}/css/signin.css" rel="stylesheet">
+
     <title>Sign In</title>
 </head>
 <body class="text-center">
 <main class="form-signin">
-<form action="/signIn" method="post" class="form">
+<form action="<c:url value="/signIn"/>" method="post" class="form">
     <%--<p>Sign In</p>
     <p>
         <label for="login">Login<input id="login" type="text" name="login"></label><br>
@@ -70,7 +72,6 @@
         <label for="password">Password<input id="password" type="password" name="password"></label><br>
         <label for="email">Email<input id="email" type="email" name="email" value=""></label>--%>
         <h1 class="h3 mb-4 fw-normal">Пожалуйста, войдите</h1>
-
         <div class="form-floating">
             <input type="email" class="form-control" id="email" name="email">
             <label for="email">Email</label>
@@ -81,6 +82,7 @@
         </div>
 
 
+        <p><font color="#dc3545">${signInStatus}</font> </p>
         <button class="w-100 btn btn-lg btn-primary" type="submit">Войти</button>
         <p class="mt-3 mb-3 text-muted">&copy; 2021</p>
         <%--<div class="checkbox mb-3">
@@ -90,6 +92,5 @@
             </div>--%>
 </form>
 </main>
-<h3>${signInStatus}</h3>
 </body>
 </html>

@@ -57,7 +57,7 @@ public class SignInServlet extends HttpServlet {
         System.out.println(cookie);
         if (cookie != null) {
             resp.addCookie(cookie);
-            resp.sendRedirect("/start");
+            resp.sendRedirect("/profile");
         } else {
             req.setAttribute("signInStatus", "Неправильный логин или пароль");
             req.getRequestDispatcher("jsp/signIn.jsp").forward(req, resp);

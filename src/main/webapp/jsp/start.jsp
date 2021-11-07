@@ -63,7 +63,7 @@
     <header class="blog-header py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-4 pt-1">
-                <a class="link-secondary" href="#">Войти</a>
+                <a class="link-secondary" href="<c:url value="/signIn"/>">Войти</a>
             </div>
             <div class="col-4 text-center">
                 <a class="blog-header-logo text-dark" href="#">RecipeSite</a>
@@ -72,14 +72,14 @@
                 <a class="link-secondary" href="#" aria-label="Search">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
                 </a>
-                <a class="btn btn-sm btn-outline-secondary" href="#">Зарегистрироваться</a>
+                <a class="btn btn-sm btn-outline-secondary" href="<c:url value="/signUp"/>">Зарегистрироваться</a>
             </div>
         </div>
     </header>
 
     <div class="nav-scroller py-0 mb-0">
         <header class="blog-header py-3">
-            <a class="p-2 link-secondary" href="#">Мой кабинет</a>
+            <a class="p-2 link-secondary" href="<c:url value="/profile"/>">Мой кабинет</a>
             <a class="p-2 link-secondary" href="#">Все рецепты</a>
             <a class="p-2 link-secondary" href="#">Контакты</a>
         </header>

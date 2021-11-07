@@ -61,8 +61,9 @@ public class RegistrationServlet extends HttpServlet {
         userForm.setAchievement(0);
 
         userService.register(userForm);
+        resp.sendRedirect("/signIn");
 
-        req.getRequestDispatcher("jsp/registration.jsp").forward(req, resp);
+        //req.getRequestDispatcher("jsp/registration.jsp").forward(req, resp);
     }
 
 

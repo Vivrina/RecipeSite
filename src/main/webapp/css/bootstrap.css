@@ -6599,6 +6599,9 @@ textarea.form-control-lg {
   content: "";
 }
 
+
+
+
 .text-truncate {
   overflow: hidden;
   text-overflow: ellipsis;

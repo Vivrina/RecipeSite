@@ -8,6 +8,7 @@ public class User {
     private Integer achievement;
 
 
+
     public Long getId_user() {
         return id_user;
     }

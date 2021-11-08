@@ -1,7 +1,4 @@
-body{
 
-    margin-top:40px;
-}
 .widget-author {
     margin-bottom: 58px;
 }
@@ -38,7 +35,7 @@ body{
 .author-card .author-card-profile {
     display: table;
     position: relative;
-    margin-top: -22px;
+    margin-top: 0px;
     padding-right: 15px;
     padding-bottom: 16px;
     padding-left: 20px;
@@ -186,7 +183,7 @@ a.list-group-item, .list-group-item-action {
     width: 100%;
 }
 .product-card .product-card-body {
-    padding: 0 20px;
+    padding: 0 0px;
     text-align: center;
 }
 .product-card .product-meta {
@@ -280,8 +277,8 @@ a.list-group-item, .list-group-item-action {
     box-shadow: 0 12px 20px 1px rgba(64, 64, 64, .09);
 }
 .product-category-card .product-category-card-body {
-    padding: 20px;
-    padding-bottom: 28px;
+    padding: 0px;
+    padding-bottom: 0px;
 }
 .product-category-card .main-img, .product-category-card .thumblist {
     display: table-cell;
@@ -544,11 +541,11 @@ a.list-group-item, .list-group-item-action {
 .card-wrapper {
     margin: 30px -15px;
 }
-@media (max-width: 576px) {
+@media (max-width: 0px) {
     .card-wrapper .jp-card-container {
-        width: 260px !important;
+        width: 0px !important;
     }
     .card-wrapper .jp-card {
-        min-width: 250px !important;
+        min-width: 0px !important;
     }
 }

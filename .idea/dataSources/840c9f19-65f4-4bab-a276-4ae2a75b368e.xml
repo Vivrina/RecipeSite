@@ -1046,6 +1046,7 @@ UC/10
     </table>
     <table id="44" parent="19" name="users">
       <ObjectId>16677</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>postgres</Owner>
       <StateNumber>651</StateNumber>
     </table>

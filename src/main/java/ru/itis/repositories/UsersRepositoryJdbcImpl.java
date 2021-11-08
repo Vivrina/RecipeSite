@@ -80,6 +80,7 @@ public class UsersRepositoryJdbcImpl implements UserRepository{
                 user.setPasswordHash(resultSet.getString("password"));
                 user.setEmail(resultSet.getString("email"));
                 user.setAchievement(resultSet.getInt("achievement"));
+
             }
         } catch (SQLException throwables){
             //throwables.printStackTrace();

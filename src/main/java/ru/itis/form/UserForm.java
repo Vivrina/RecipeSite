@@ -6,6 +6,7 @@ public class UserForm {
     private String email;
     private Integer achievement = 0;
 
+
     public UserForm() {
     }
 

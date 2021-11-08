@@ -60,6 +60,7 @@ public class RegistrationServlet extends HttpServlet {
         userForm.setEmail(req.getParameter("email"));
         userForm.setAchievement(0);
 
+
         userService.register(userForm);
         resp.sendRedirect("/signIn");
 

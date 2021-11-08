@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter(value = {"/profile"})
+//@WebFilter(value = {"/profile"})
 public class SignInFilter implements Filter{
 
     @Override
@@ -20,10 +20,13 @@ public class SignInFilter implements Filter{
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
-        Cookie cookies[] = request.getCookies();
+        Cookie[] cookies = request.getCookies();
 
         if (cookies != null) {
             for (Cookie cookie: cookies) {
+                System.out.println("fff");
+                System.out.println(cookie.getName());
+                System.out.println(cookie.getName().equals("auth"));
                 if (cookie.getName().equals("auth")) {
                     System.out.println("Куки из браузера");
                     System.out.println(cookie.getValue());

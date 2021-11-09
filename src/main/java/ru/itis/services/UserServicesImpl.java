@@ -4,6 +4,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import ru.itis.form.LoginForm;
 import ru.itis.form.UserForm;
+import ru.itis.models.Auth;
 import ru.itis.models.User;
 import ru.itis.repositories.AuthRepository;
 import ru.itis.repositories.UserRepository;
@@ -61,6 +62,12 @@ public class UserServicesImpl implements UserService{
                 String cookieValue = UUID.randomUUID().toString();
                 Cookie cookie = new Cookie("auth", cookieValue);
                 cookie.setMaxAge(10*60*60);
+                Auth auth = new Auth();
+                auth.setUser(user);
+                auth.setCookieValue(cookieValue);
+                System.out.println("Юзер сервис кукиВ"+ cookie.getValue());
+                System.out.println("Юзер сервис ауфКукиВ" + auth.getCookieValue());
+                authRepository.save(auth);
                 return cookie;
             } else {
                 System.out.println("Вход не выполнен");

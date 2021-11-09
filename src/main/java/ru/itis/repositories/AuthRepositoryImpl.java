@@ -2,13 +2,18 @@ package ru.itis.repositories;
 
 import ru.itis.models.Auth;
 
-import java.sql.Connection;
+import java.sql.*;
 import java.util.List;
 import java.util.Optional;
 
 public class AuthRepositoryImpl implements AuthRepository{
 
     private Connection connection;
+    private Statement statement;
+
+
+    //language=sql
+    private final String SQL_INSERT_USER = "INSERT INTO auth(user_id, cookie_value) VALUES (?, ?);";
 
 
 
@@ -33,7 +38,25 @@ public class AuthRepositoryImpl implements AuthRepository{
 
     @Override
     public Auth save(Auth auth) {
-        return null;
+        ResultSet resultSet = null;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL_INSERT_USER, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setLong(1, auth.getUser().getId_user());
+            preparedStatement.setString(2, auth.getCookieValue());
+
+
+
+
+
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                auth.setId(resultSet.getLong("id"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return auth;
     }
 
     @Override

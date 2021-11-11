@@ -1,10 +1,12 @@
 package ru.itis.filters;
 
 import ru.itis.models.Auth;
+import ru.itis.models.User;
 import ru.itis.repositories.AuthRepository;
 import ru.itis.repositories.AuthRepositoryImpl;
 import ru.itis.repositories.UserRepository;
 import ru.itis.repositories.UsersRepositoryJdbcImpl;
+import ru.itis.services.UserService;
 import ru.itis.services.UserServicesImpl;
 
 import javax.servlet.*;
@@ -20,6 +22,7 @@ import java.sql.SQLException;
 
 //@WebFilter(value = {"/profile"})
 public class SignInFilter implements Filter{
+    private UserService userService;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -37,37 +40,30 @@ public class SignInFilter implements Filter{
     }
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest)servletRequest;
         HttpServletResponse response = (HttpServletResponse)servletResponse;
         HttpSession session = request.getSession();
-        Cookie[] cookies = request.getCookies();
-        String s = request.getParameter("cookie_value");
-
-        if (cookies != null) {
-            for (Cookie cookie: cookies) {
-                System.out.println("fff");
-                System.out.println(cookie.getName());
-                System.out.println(cookie.getName().equals("auth"));
-                System.out.println(cookie.getValue());
-                System.out.println(s);
-                if (cookie.getValue().equals(s)) {
-                    System.out.println("Куки из браузера");
-                    System.out.println(cookie.getValue());
-                    filterChain.doFilter(servletRequest, servletResponse);
-                } else {
-                    System.out.println("Пользователь не аутентифицирован!!!");
-                    response.sendRedirect("/signIn");
-                    return;
-                }
-            }
+        User user = checkCookie(request);
+        if (user != null) {
+            session.setAttribute("isAuth", true);
+            session.setAttribute("user", user);
         } else {
-            System.out.println("Пользователь не аутентифицирован!!!");
-            response.sendRedirect("/signIn");
-            return;
+            session.setAttribute("isAuth", false);
         }
+        chain.doFilter(request, response);
+    }
 
-        filterChain.doFilter(servletRequest, servletResponse);
+
+    private User checkCookie(HttpServletRequest request) {
+        User user = null;
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("auth")) {
+                user = userService.getUserByCookie(cookie);
+            }
+        }
+        return user;
     }
 
     @Override

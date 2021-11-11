@@ -1,5 +1,7 @@
 package ru.itis.models;
 
+import java.util.Date;
+
 public class User {
     private Long id_user;
     private String name;
@@ -49,5 +51,17 @@ public class User {
 
     public void setAchievement(Integer achievement) {
         this.achievement = achievement;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id_user=" + id_user +
+                ", name='" + name + '\'' +
+                ", passwordHash='" + passwordHash + '\'' +
+                ", email='" + email + '\'' +
+                ", achievement=" + achievement +
+                ", created=" + created +
+                '}';
     }
 }

@@ -55,8 +55,6 @@ public class SignInServlet extends HttpServlet {
         LoginForm loginForm = new LoginForm(email, password);
         Cookie cookie = userService.signIn(loginForm);
 
-        System.out.println("Сигн ин сервлет куки значение" + cookie.getValue());
-        System.out.println(cookie);
         if (cookie != null) {
             resp.addCookie(cookie);
             resp.sendRedirect("/profile");

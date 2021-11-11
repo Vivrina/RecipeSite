@@ -76,4 +76,10 @@ public class UserServicesImpl implements UserService{
 
         return null;
     }
+
+
+    @Override
+    public User getUserByCookie(Cookie cookie) {
+        return authRepository.findByCookieValue(cookie.getValue());
+    }
 }

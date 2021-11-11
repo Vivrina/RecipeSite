@@ -9,4 +9,6 @@ import javax.servlet.http.Cookie;
 public interface UserService {
     User register(UserForm userForm);
     Cookie signIn(LoginForm loginForm);
+    User getUserByCookie(Cookie cookie);
+
 }

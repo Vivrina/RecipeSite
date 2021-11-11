@@ -70,41 +70,68 @@
             <p class="lead">Скорее добавляйте ваш рецепт!</p>
         </div>
 
-        <div class="row g-3">
-            <div class="col-md-6">
-                <label for="inputEmail4" class="form-label">Название</label>
-                <input type="email" class="form-control" id="inputEmail4">
-            </div>
-            <div class="col-md-6">
-                <label for="formFile" class="form-label">Фото блюда</label>
-                <input class="form-control" type="file" id="formFile">
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Описание (рецепт)</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-            <div class="col-12">
-                <label  class="form-label">Категория</label>
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Выберите категорию вашего рецепта</option>
-                    <option value="1">Первые блюда</option>
-                    <option value="2">Вторые блюда</option>
-                    <option value="3">Закуски</option>
-                </select>
-            </div>
-            <label for="button-addon2" class="form-label">Ингридиенты</label>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Выберите ингридиенты блюда" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
-            </div>
 
 
 
+        <form action="/addRecipe" method="post">
+            <input type="hidden" id="user" name="user"  value="${user.id_user}">
 
-            <div class="col-12">
-                <button type="submit" class="btn btn-primary">Добавить рецепт</button>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="title" class="form-label">Название</label>
+                    <input required="required" type="text" class="form-control" name="title" id="title">
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Описание (рецепт)</label>
+                    <textarea required="required" class="form-control" id="description" name="description" rows="3"></textarea>
+                </div>
+                <div class="col-12">
+                    <label  class="form-label">Категория</label>
+                    <select name="category_id"  id="category_id" required="required" class="form-select" aria-label="Default select example">
+                        <c:forEach items="${categories}" var="category">
+                            <option value="${category.id}">${category.name}</option>
+                        </c:forEach>
+
+                    </select>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Добавить рецепт</button>
+                </div>
             </div>
-        </div>
+        </form>
+<%--        <div class="row g-3">--%>
+<%--            <div class="col-md-6">--%>
+<%--                <label for="inputEmail4" class="form-label">Название</label>--%>
+<%--                <input type="email" class="form-control" id="inputEmail4">--%>
+<%--            </div>--%>
+<%--            <div class="col-md-6">--%>
+<%--                <label for="formFile" class="form-label">Фото блюда</label>--%>
+<%--                <input class="form-control" type="file" id="formFile">--%>
+<%--            </div>--%>
+<%--            <div class="mb-3">--%>
+<%--                <label for="exampleFormControlTextarea1" class="form-label">Описание (рецепт)</label>--%>
+<%--                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>--%>
+<%--            </div>--%>
+<%--            <div class="col-12">--%>
+<%--                <label  class="form-label">Категория</label>--%>
+<%--                <select class="form-select" aria-label="Default select example">--%>
+<%--                    <option selected>Выберите категорию вашего рецепта</option>--%>
+<%--                    <option value="1">Первые блюда</option>--%>
+<%--                    <option value="2">Вторые блюда</option>--%>
+<%--                    <option value="3">Закуски</option>--%>
+
+<%--                </select>--%>
+<%--            </div>--%>
+<%--            <label for="button-addon2" class="form-label">Ингридиенты</label>--%>
+<%--            <div class="input-group mb-3">--%>
+<%--                <input type="text" class="form-control" placeholder="Выберите ингридиенты блюда" aria-label="Recipient's username" aria-describedby="button-addon2">--%>
+<%--                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>--%>
+<%--            </div>--%>
+
+<%--            <div class="col-12">--%>
+<%--                <button type="submit" class="btn btn-primary">Добавить рецепт</button>--%>
+<%--            </div>--%>
+<%--        </div>--%>
     </main>
 </div>
 

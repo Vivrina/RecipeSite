@@ -14,21 +14,15 @@ import java.sql.Connection;
 import java.util.UUID;
 
 public class UserServicesImpl implements UserService{
-    private Connection connection;
-    public UserServicesImpl(Connection connection){
-        this.connection = connection;
-    }
-
-
 
     private UserRepository userRepository;
     private AuthRepository authRepository;
     private PasswordEncoder passwordEncoder;
 
-    public UserServicesImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = new BCryptPasswordEncoder();
-    }
+//    public UserServicesImpl(UserRepository userRepository) {
+//        this.userRepository = userRepository;
+//        this.passwordEncoder = new BCryptPasswordEncoder();
+//    }
 
     public UserServicesImpl(UserRepository usersRepository, AuthRepository authRepository) {
         this.userRepository = usersRepository;

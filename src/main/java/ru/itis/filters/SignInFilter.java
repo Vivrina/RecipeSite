@@ -20,7 +20,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-//@WebFilter(value = {"/profile"})
+@WebFilter(value = {"/profile", "/addRecipe"})
 public class SignInFilter implements Filter{
     private UserService userService;
 
@@ -30,12 +30,15 @@ public class SignInFilter implements Filter{
             //Подгружаем драйвер, оно автоматически регистрирует JDBC
             Class.forName("org.postgresql.Driver");
             Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/dbrecipes", "postgres", "home131");
-
+            UserRepository userRepository = new UsersRepositoryJdbcImpl(connection);
+            AuthRepository authRepository = new AuthRepositoryImpl(connection);
+            this.userService = new UserServicesImpl(userRepository, authRepository);
 
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Unavailable");
             throw new UnavailableException("Сайт недоступен!!!");
         }
+
 
     }
 
@@ -67,7 +70,5 @@ public class SignInFilter implements Filter{
     }
 
     @Override
-    public void destroy() {
-
-    }
+    public void destroy() {}
 }

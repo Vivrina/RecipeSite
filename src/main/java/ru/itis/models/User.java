@@ -8,8 +8,16 @@ public class User {
     private String passwordHash;
     private String email;
     private Integer achievement;
+    private Date created;
 
 
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
 
     public Long getId_user() {
         return id_user;

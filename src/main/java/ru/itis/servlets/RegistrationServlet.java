@@ -1,6 +1,8 @@
 package ru.itis.servlets;
 
 import ru.itis.form.UserForm;
+import ru.itis.repositories.AuthRepository;
+import ru.itis.repositories.AuthRepositoryImpl;
 import ru.itis.repositories.UserRepository;
 import ru.itis.repositories.UsersRepositoryJdbcImpl;
 import ru.itis.services.UserService;
@@ -35,15 +37,12 @@ public class RegistrationServlet extends HttpServlet {
             Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/dbrecipes", "postgres", "home131");
 
             UserRepository usersRepository = new UsersRepositoryJdbcImpl(connection);
-            userService = new UserServicesImpl(usersRepository);
+            AuthRepository authRepository = new AuthRepositoryImpl(connection);
+            userService = new UserServicesImpl(usersRepository, authRepository);
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Unavailable");
             throw new UnavailableException("Сайт недоступен!!!");
         }
-
-
-
-
     }
 
     @Override
@@ -58,8 +57,6 @@ public class RegistrationServlet extends HttpServlet {
         userForm.setName(req.getParameter("name"));
         userForm.setPassword(req.getParameter("password"));
         userForm.setEmail(req.getParameter("email"));
-        userForm.setAchievement(0);
-
 
         userService.register(userForm);
         resp.sendRedirect("/signIn");

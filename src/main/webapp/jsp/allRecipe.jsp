@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -6,7 +5,9 @@
   Time: 23:42
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<c:set var="user"  value="${user}"/>
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css">
@@ -82,79 +83,78 @@
 </header>
     <div class="row g-5">
         <div class="col-md-12">
-            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-success">Соня</strong>
-                    <h3 class="mb-0">Сочная курица с картошкой</h3>
-                    <div class="mb-1 text-muted">11 Октября</div>
-                    <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="stretched-link">Читать далее</a>
+            <c:forEach items="${recipes}" var="recipe">
+                <div class="row g-0 border ounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-success">${user.name}</strong>
+                        <h3 class="mb-0">${recipe.title}</h3>
+                        <div class="mb-1 text-muted">${recipe.dateCreation}</div>
+                        <p class="mb-auto">${recipe.description}</p>
+                        <a href="#" class="stretched-link">Читать далее</a>
+                    </div>
+                    <div class="col-auto d-none d-lg-block">
+                            <%--<svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>--%>
+                        <img class="bd-placeholder-img" width="200" height="250" src="https://images.pexels.com/photos/1624487/pexels-photo-1624487.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+                    </div>
                 </div>
-                <div class="col-auto d-none d-lg-block">
-                    <%--<svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>--%>
-                    <img class="bd-placeholder-img" width="200" height="250" src="https://images.pexels.com/photos/1624487/pexels-photo-1624487.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
-                </div>
-            </div>
+            </c:forEach>
 
-            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-primary">Ира</strong>
-                    <h3 class="mb-0">Шарлотка</h3>
-                    <div class="mb-1 text-muted">12 Ноября</div>
-                    <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="stretched-link">Читать далее</a>
-                </div>
-                <div class="col-auto d-none d-lg-block">
-                    <%--<svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>--%>
-                    <img class="bd-placeholder-img" width="200" height="250" src="https://images.pexels.com/photos/6069006/pexels-photo-6069006.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
-                </div>
-            </div>
+<%--            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">--%>
+<%--                <div class="col p-4 d-flex flex-column position-static">--%>
+<%--                    <strong class="d-inline-block mb-2 text-primary">Ира</strong>--%>
+<%--                    <h3 class="mb-0">Шарлотка</h3>--%>
+<%--                    <div class="mb-1 text-muted">12 Ноября</div>--%>
+<%--                    <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>--%>
+<%--                    <a href="#" class="stretched-link">Читать далее</a>--%>
+<%--                </div>--%>
+<%--                <div class="col-auto d-none d-lg-block">--%>
+<%--                    &lt;%&ndash;<svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>&ndash;%&gt;--%>
+<%--                    <img class="bd-placeholder-img" width="200" height="250" src="https://images.pexels.com/photos/6069006/pexels-photo-6069006.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">--%>
+<%--                </div>--%>
+<%--            </div>--%>
 
-            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-primary">Ира</strong>
-                    <h3 class="mb-0">Шарлотка</h3>
-                    <div class="mb-1 text-muted">12 Ноября</div>
-                    <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="stretched-link">Читать далее</a>
-                </div>
-                <div class="col-auto d-none d-lg-block">
-                    <%--<svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>--%>
-                    <img class="bd-placeholder-img" width="200" height="250" src="https://images.pexels.com/photos/6069006/pexels-photo-6069006.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
-                </div>
-            </div>
+<%--            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">--%>
+<%--                <div class="col p-4 d-flex flex-column position-static">--%>
+<%--                    <strong class="d-inline-block mb-2 text-primary">Ира</strong>--%>
+<%--                    <h3 class="mb-0">Шарлотка</h3>--%>
+<%--                    <div class="mb-1 text-muted">12 Ноября</div>--%>
+<%--                    <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>--%>
+<%--                    <a href="#" class="stretched-link">Читать далее</a>--%>
+<%--                </div>--%>
+<%--                <div class="col-auto d-none d-lg-block">--%>
+<%--                    &lt;%&ndash;<svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>&ndash;%&gt;--%>
+<%--                    <img class="bd-placeholder-img" width="200" height="250" src="https://images.pexels.com/photos/6069006/pexels-photo-6069006.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">--%>
+<%--                </div>--%>
+<%--            </div>--%>
 
-            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-primary">Ира</strong>
-                    <h3 class="mb-0">Шарлотка</h3>
-                    <div class="mb-1 text-muted">12 Ноября</div>
-                    <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="stretched-link">Читать далее</a>
-                </div>
-                <div class="col-auto d-none d-lg-block">
-                    <%--<svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>--%>
-                    <img class="bd-placeholder-img" width="200" height="250" src="https://images.pexels.com/photos/6069006/pexels-photo-6069006.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
-                </div>
-            </div>
+<%--            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">--%>
+<%--                <div class="col p-4 d-flex flex-column position-static">--%>
+<%--                    <strong class="d-inline-block mb-2 text-primary">Ира</strong>--%>
+<%--                    <h3 class="mb-0">Шарлотка</h3>--%>
+<%--                    <div class="mb-1 text-muted">12 Ноября</div>--%>
+<%--                    <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>--%>
+<%--                    <a href="#" class="stretched-link">Читать далее</a>--%>
+<%--                </div>--%>
+<%--                <div class="col-auto d-none d-lg-block">--%>
+<%--                    &lt;%&ndash;<svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>&ndash;%&gt;--%>
+<%--                    <img class="bd-placeholder-img" width="200" height="250" src="https://images.pexels.com/photos/6069006/pexels-photo-6069006.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">--%>
+<%--                </div>--%>
+<%--            </div>--%>
 
-            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-primary">Ира</strong>
-                    <h3 class="mb-0">Шарлотка</h3>
-                    <div class="mb-1 text-muted">12 Ноября</div>
-                    <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="stretched-link">Читать далее</a>
-                </div>
-                <div class="col-auto d-none d-lg-block">
-                    <%--<svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>--%>
-                    <img class="bd-placeholder-img" width="200" height="250" src="https://images.pexels.com/photos/6069006/pexels-photo-6069006.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
-                </div>
-            </div>
-
+<%--            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">--%>
+<%--                <div class="col p-4 d-flex flex-column position-static">--%>
+<%--                    <strong class="d-inline-block mb-2 text-primary">Ира</strong>--%>
+<%--                    <h3 class="mb-0">Шарлотка</h3>--%>
+<%--                    <div class="mb-1 text-muted">12 Ноября</div>--%>
+<%--                    <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>--%>
+<%--                    <a href="#" class="stretched-link">Читать далее</a>--%>
+<%--                </div>--%>
+<%--                <div class="col-auto d-none d-lg-block">--%>
+<%--                    &lt;%&ndash;<svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>&ndash;%&gt;--%>
+<%--                    <img class="bd-placeholder-img" width="200" height="250" src="https://images.pexels.com/photos/6069006/pexels-photo-6069006.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">--%>
+<%--                </div>--%>
+<%--            </div>--%>
         </div>
-
-
     </div>
 
 </div>
